@@ -1,0 +1,59 @@
+Create a Spring MVC Application  ( Type :  Spring MVC with Spring Forms and ModelView )
+-------------------------------
+
+Task:
+-----
+
+PreRequisites : Add the required JAR Files.
+0.Create a bean named Login and add a variable named name in it. 
+0.1 Generate Getters and Setters.
+1. Create a controller class named MyController inside com.dsrc.controller package
+2. Create an empty constructor MyController()
+3. Create request mapping methods for two actions
+		index.htm and login.htm
+		Sample Code as follows.
+		----------------------
+		
+		@RequestMapping(value = "/index.htm", method = RequestMethod.GET)
+ 		public ModelAndView student(Model model) {
+	  
+	 				return new ModelAndView("index","command",model);
+ 		}
+ 
+ 	Sample login.htm action
+ 	
+ 	@RequestMapping("/login.htm")  
+	public String login(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("Login")Login log) {
+	  
+	   //print the login name..
+	  
+ 			 return "login";
+ 	  }
+ 	
+ 	
+		
+4.Add web.xml 
+5. Add  Third-servlet.xml
+6. Create a folder named jsp in /WEB_INF/ Folder
+7. Add 2 JSP pages named index.jsp and login.jsp
+8. Design the index.jsp with SpringForm Tags
+--------------------------------------
+
+<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
+<html>
+  <head>
+    <title>Spring MVC login example.</title>
+  </head>
+ 
+  <body>
+  <form:form method = "POST" action = "login.htm" modelAttribute="command">
+  		<form:label path = "name">Name</form:label>
+  		<form:input path = "name" />
+  		 <input type = "submit" value = "Submit"/>
+  </form:form> 
+  
+ 
+  </body>  
+</html>
+
+ 9. Get the value in controller and print it in console.. 	
